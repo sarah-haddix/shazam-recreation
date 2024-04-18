@@ -8,5 +8,5 @@
 import Foundation
 
 class SongsViewModel: ObservableObject {
-    @Published var allWorkouts: [ShazamMedia] = [ShazamMedia.example]
+    @Published var allSongs: [ShazamMedia] = [ShazamMedia.example]
 }

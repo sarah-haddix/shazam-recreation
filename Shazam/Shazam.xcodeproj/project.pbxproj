@@ -62,11 +62,11 @@
 				6E7C08C72BCB6BDD00A65BF6 /* ShazamApp.swift */,
 				6E7C08C92BCB6BDD00A65BF6 /* ContentView.swift */,
 				6E7C08D72BCB6E9600A65BF6 /* ContentViewModel.swift */,
-				6E7C08FF2BCCB2DC00A65BF6 /* ShazamMediaModel.swift */,
 				6E7C08CB2BCB6BDE00A65BF6 /* Assets.xcassets */,
-				6E7C08CD2BCB6BDE00A65BF6 /* Preview Content */,
 				6E7C08FB2BCCB0CB00A65BF6 /* SongsViewModel.swift */,
 				6E7C08FD2BCCB0D500A65BF6 /* SongView.swift */,
+				6E7C08FF2BCCB2DC00A65BF6 /* ShazamMediaModel.swift */,
+				6E7C08CD2BCB6BDE00A65BF6 /* Preview Content */,
 			);
 			path = Shazam;
 			sourceTree = "<group>";

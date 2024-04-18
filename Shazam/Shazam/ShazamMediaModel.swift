@@ -17,6 +17,6 @@ struct ShazamMedia: Decodable {
 
 extension ShazamMedia {
     static var example: ShazamMedia {
-        ShazamMedia(title: "Example", subtitle: "Example", artistName: "Example", albumArtURL: <#T##URL?#>, genres: ["pop", "rock"])
+        ShazamMedia(title: "Example", subtitle: "Example", artistName: "Example", albumArtURL: URL(filePath: "endofbeginning"), genres: ["pop", "rock"])
     }
 }
