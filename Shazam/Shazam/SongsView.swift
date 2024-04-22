@@ -10,7 +10,7 @@ import SwiftUI
 struct SongsView: View {
     @Binding var showingMenu: Bool;
     @State private var isDragging = false;
-    @ObservedObject var vm: SongsViewModel
+    @ObservedObject var vm: ContentViewModel
     
     // Define the grid layout
     let columns: [GridItem] = [
@@ -27,7 +27,12 @@ struct SongsView: View {
                     } label: {
                         Rectangle()
                             .frame(width: geometry.size.width, height: 100)
-                            .foregroundStyle(.red)
+                        
+                        
+                        
+                        
+                        //TODO MAKE THIS CLEAR
+                            .foregroundStyle(.appPrimary)
                             .padding(.vertical)
                     }
                     .gesture(
@@ -51,7 +56,7 @@ struct SongsView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.blue)
+                .background(.appPrimary)
                 .edgesIgnoringSafeArea(.all)
             }
         }
@@ -64,7 +69,7 @@ struct SongsView_Previews: PreviewProvider {
         @State private var showingMenu = false
 
         var body: some View {
-            SongsView(showingMenu: $showingMenu, vm: SongsViewModel())
+            SongsView(showingMenu: $showingMenu, vm: ContentViewModel())
         }
     }
 

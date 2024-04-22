@@ -10,29 +10,33 @@ import PureSwiftUI
 
 struct ShazamView: View {
     @State var showingMenu = false;
-    @StateObject var vm: SongsViewModel
-    @StateObject private var shazamHandler = ContentViewModel()
+    @StateObject var vm = ContentViewModel()
+    //@StateObject private var shazamHandler = ContentViewModel()
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
-                VStack {
-                    Spacer()
-                    HStack {
+                ZStack {
+                    VStack {
                         Spacer()
-                        Button(action: {shazamHandler.startOrEndListening()}) {
-                            ShazamLogo()
+                        HStack {
+                            Spacer()
+                            Button(action: {vm.startOrEndListening()}) {
+                                ShazamLogo()
+                            }
+                            Spacer()
                         }
                         Spacer()
                     }
-                    Spacer()
-                }
-                SongsView(showingMenu: $showingMenu, vm: vm)
-                    .offset(y: geometry.size.height * 0.85)
-                .sheet(isPresented: $showingMenu) {
                     SongsView(showingMenu: $showingMenu, vm: vm)
+                        .offset(y: geometry.size.height * 0.85)
+                        .sheet(isPresented: $showingMenu) {
+                            SongsView(showingMenu: $showingMenu, vm: vm)
+                        }
                 }
             }
+            .backgroundColor(.appMediumGray)
+            .ignoresSafeArea()
         }
     }
 }
@@ -148,5 +152,5 @@ private struct ShazamCapsule: Shape {
 }
 
 #Preview {
-    ShazamView(vm: SongsViewModel())
+    ShazamView(vm: ContentViewModel())
 }
