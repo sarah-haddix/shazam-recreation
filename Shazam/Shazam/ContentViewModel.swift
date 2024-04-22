@@ -79,6 +79,7 @@ extension ContentViewModel: SHSessionDelegate {
     
     public func startOrEndListening() {
         guard !audioEngine.isRunning else {
+            audioEngine.inputNode.removeTap(onBus: 0)
             audioEngine.stop()
             DispatchQueue.main.async {
                 self.isRecording = false

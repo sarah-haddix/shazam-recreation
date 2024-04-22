@@ -10,6 +10,7 @@ import PureSwiftUI
 
 struct ShazamView: View {
     @State var showingMenu = false;
+    @State var isAnimating = false;
     @State private var breathing = false;
     @StateObject var vm = ContentViewModel()
     
@@ -25,33 +26,43 @@ struct ShazamView: View {
                                 vm.startOrEndListening()
                                 vm.isRecording.toggle()
                             }) {
-                                    ShazamLogo()
-                                }
-                           // Spacer()
+                                ShazamLogo()
+                            }
+                            // Spacer()
                         }
-                       // Spacer()
+                        // Spacer()
                     }
                     .zIndex(1.0)
-                    if(vm.isRecording) {
+                    Group {
                         Circle()
                             .stroke()
                             .ignoresSafeArea()
                             .foregroundColor(.appGrey)
                             .frame(width: 400)
-                            .scaleIf(breathing, 1.5)
+                            .scaleIf(isAnimating, 1.5)
+                            .opacity(vm.isRecording ? 1 : 0)
                         Circle()
                             .ignoresSafeArea()
                             .foregroundColor(.appDarkGray)
                             .frame(width: 300)
-                            .scaleIf(breathing, 1.2)
+                            .scaleIf(isAnimating, 1.2)
+                            .opacity(vm.isRecording ? 1 : 0)
                         Circle()
                             .stroke()
                             .ignoresSafeArea()
                             .foregroundColor(.appGrey)
                             .frame(width: 350)
-                            .scaleIf(breathing, 1.4)
+                            .scaleIf(isAnimating, 1.4)
+                            .opacity(vm.isRecording ? 1 : 0)
                     }
-
+                    .onAppear {
+                        withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                            isAnimating = true
+                        }
+                    }
+                    
+                    
+                    
                     
                     SongsView(showingMenu: $showingMenu, vm: vm)
                         .offset(y: geometry.size.height * 0.85)
@@ -65,14 +76,10 @@ struct ShazamView: View {
             }
             .backgroundColor(.appMediumGray)
             .ignoresSafeArea()
-            .onAppear {
-                withAnimation(Animation.linear(duration: 0.6).repeatForever(autoreverses: true)) {
-                    breathing = true
-                }
-            }
         }
     }
 }
+
 
 
 
@@ -84,7 +91,7 @@ struct ShazamLogo: View {
             Label("Tap to Shazam", sfSymbol: .mic_fill)
                 .titleFont(.white, .bold)
                 .yOffset(-175)
-                .opacityIfNot(showingTitle, 0)
+                //.opacity(showingTitle ? 0 : 1)
             CircleAndLinks()
                 .frame(200)
                 .scaleIf(breathing, 1.17)
@@ -120,18 +127,18 @@ private struct CircleAndLinks: View {
             
             let fromTrim: CGFloat = 0.43
             let toTrim: CGFloat = 1
-
+            
             let whiteLink = Link(fromTrim: animated ? fromTrim : fromTrim - 2,
                                  toTrim: animated ? toTrim : toTrim - 2.5, color: .white)
             let blackLink = Link(fromTrim: animated ? fromTrim + 1 : fromTrim,
-                 toTrim: toTrim, color: .black)
+                                 toTrim: toTrim, color: .black)
             
             Group {
                 whiteLink
                 whiteLink.rotate(180.degrees)
             }
             .shadowColor(.black, 0.2, y: 0.4)
-
+            
             Group {
                 blackLink
                 blackLink.rotate(180.degrees)

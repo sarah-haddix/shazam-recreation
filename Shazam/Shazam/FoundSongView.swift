@@ -55,6 +55,7 @@ struct FoundSongView: View {
                 }.padding()
                     .padding(.bottom)
                     .padding(.bottom)
+                    .padding(.bottom)
                 Spacer()
             }
             .frame(width: geometry.width)
