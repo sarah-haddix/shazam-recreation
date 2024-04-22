@@ -6,6 +6,7 @@
 //
 
 // TODO: clean up comments, maybe get rid of SongsViewModel, test audio on/off, FoundSongView, add more songs, fix alignment if you can
+// TODO: FIX SHAZAMVIEW button - don't show foundsongview
 
 import SwiftUI
 

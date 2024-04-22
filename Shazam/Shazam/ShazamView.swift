@@ -55,6 +55,9 @@ struct ShazamView: View {
                     
                     SongsView(showingMenu: $showingMenu, vm: vm)
                         .offset(y: geometry.size.height * 0.85)
+                        .sheet(isPresented: $vm.showingFoundSong) {
+                            FoundSongView(song: vm.songs[0])
+                        }
                         .sheet(isPresented: $showingMenu) {
                             SongsView(showingMenu: $showingMenu, vm: vm)
                         }

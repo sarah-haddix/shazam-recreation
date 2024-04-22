@@ -17,6 +17,7 @@ class ContentViewModel: NSObject, ObservableObject {
                                               genres: ["Pop"])
     @Published var songs: [ShazamMedia] = []
     @Published var isRecording: Bool = false
+    @Published var showingFoundSong: Bool = false
     
     // audioEngine: An AVAudioEngine contains a group of connected AVAudioNodes (“nodes”), each of which performs an audio signal generation, processing, or input/output task.
     private let audioEngine = AVAudioEngine()
@@ -63,6 +64,7 @@ extension ContentViewModel: SHSessionDelegate {
                 print("@@@@@@@@@@@@@@@@@@@@@@@@")
                 self.songs.insert(self.shazamMedia, at: 0)
                 self.startOrEndListening()
+                self.showingFoundSong = true
             }
         }
     }

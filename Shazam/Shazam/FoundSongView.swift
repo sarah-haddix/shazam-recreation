@@ -12,38 +12,55 @@ struct FoundSongView: View {
     let song: ShazamMedia
     
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
-            AsyncImage(url: song.albumArtURL) { image in
-                image
-                    .resizable()
-                    .frame(width: 400, height: 400)
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-            } placeholder: {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.purple.opacity(0.5))
-                    .frame(width: 400, height: 400)
-                    .cornerRadius(10)
-                    .redacted(reason: .privacy)
-            }
+        GeometryReader { geometry in
             VStack(alignment: .center) {
-                Text(song.title ?? "Title")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.appSecondary)
-                    .multilineTextAlignment(.center)
-                Text(song.artistName ?? "Artist Name")
-                    .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundColor(.appSecondary)
-                    .multilineTextAlignment(.center)
-            }.padding()
-            Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "x.circle.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.appGrey)
+                            .padding(.trailing)
+                            .padding(.trailing)
+                            .padding(.top)
+                            .padding(.top)
+                    }
+                }
+                Spacer()
+                AsyncImage(url: song.albumArtURL) { image in
+                    image
+                        .resizable()
+                        .frame(width: geometry.width, height: geometry.width)
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                } placeholder: {
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.purple.opacity(0.5))
+                        .frame(width: geometry.width, height: geometry.width)
+                        .cornerRadius(10)
+                        .redacted(reason: .privacy)
+                }
+                VStack(alignment: .center) {
+                    Text(song.title ?? "Title")
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.appSecondary)
+                        .multilineTextAlignment(.center)
+                    Text(song.artistName ?? "Artist Name")
+                        .font(.title2)
+                        .foregroundColor(.appGrey)
+                        .multilineTextAlignment(.center)
+                }.padding()
+                    .padding(.bottom)
+                    .padding(.bottom)
+                Spacer()
+            }
+            .frame(width: geometry.width)
+            .backgroundColor(.appMediumGray)
+            .ignoresSafeArea()
         }
-        .frame(width: 500)
-        .backgroundColor(.appMediumGray)
-        .ignoresSafeArea()
     }
 }
 
