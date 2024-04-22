@@ -5,7 +5,7 @@
 //  Created by Sarah Haddix on 4/13/24.
 //
 
-// TODO: clean up comments, maybe get rid of SongsViewModel
+// TODO: clean up comments, maybe get rid of SongsViewModel, test audio on/off, FoundSongView, add more songs, fix alignment if you can
 
 import SwiftUI
 

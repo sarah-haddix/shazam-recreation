@@ -21,18 +21,37 @@ struct ShazamView: View {
                         //Spacer()
                         HStack {
                             //Spacer()
-                                Button(action: {vm.startOrEndListening()}) {
+                            Button(action: {
+                                vm.startOrEndListening()
+                                vm.isRecording.toggle()
+                            }) {
                                     ShazamLogo()
                                 }
                            // Spacer()
                         }
                        // Spacer()
                     }
-                    Circle()
-                        .ignoresSafeArea()
-                        .foregroundColor(.red)
-                        .frame(width: 400)
-                        .scaleIf(breathing, 1.5)
+                    .zIndex(1.0)
+                    if(vm.isRecording) {
+                        Circle()
+                            .stroke()
+                            .ignoresSafeArea()
+                            .foregroundColor(.appGrey)
+                            .frame(width: 400)
+                            .scaleIf(breathing, 1.5)
+                        Circle()
+                            .ignoresSafeArea()
+                            .foregroundColor(.appDarkGray)
+                            .frame(width: 300)
+                            .scaleIf(breathing, 1.2)
+                        Circle()
+                            .stroke()
+                            .ignoresSafeArea()
+                            .foregroundColor(.appGrey)
+                            .frame(width: 350)
+                            .scaleIf(breathing, 1.4)
+                    }
+
                     
                     SongsView(showingMenu: $showingMenu, vm: vm)
                         .offset(y: geometry.size.height * 0.85)
@@ -44,7 +63,7 @@ struct ShazamView: View {
             .backgroundColor(.appMediumGray)
             .ignoresSafeArea()
             .onAppear {
-                withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: true)) {
+                withAnimation(Animation.linear(duration: 0.6).repeatForever(autoreverses: true)) {
                     breathing = true
                 }
             }

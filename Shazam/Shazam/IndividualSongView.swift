@@ -39,7 +39,7 @@ struct IndividualSongView: View {
                     .frame(width: 160, height: 110)
                     .foregroundStyle(.appDarkGray)
                 HStack {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .center) {
                         Text(song.title ?? "Title")
                             .foregroundStyle(.appSecondary)
                             .font(.subheadline)
@@ -52,7 +52,6 @@ struct IndividualSongView: View {
                             .multilineTextAlignment(.center)
                     }
                     .frame(width: geometry.size.width*0.45)
-                    Spacer()
                 }
                 .frame(width: geometry.size.width*0.45)
             }

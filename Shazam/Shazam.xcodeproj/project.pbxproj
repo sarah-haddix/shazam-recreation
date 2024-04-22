@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E4F80BC2BD6129D002D5CC5 /* FoundSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F80BB2BD6129D002D5CC5 /* FoundSongView.swift */; };
 		6E7543562BD413B5003C0733 /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7543552BD413B5003C0733 /* SongsView.swift */; };
 		6E7543582BD41468003C0733 /* ShazamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7543572BD41468003C0733 /* ShazamView.swift */; };
 		6E75435A2BD44FA8003C0733 /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7543592BD44FA8003C0733 /* SongsViewModel.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E4F80BB2BD6129D002D5CC5 /* FoundSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSongView.swift; sourceTree = "<group>"; };
 		6E7543552BD413B5003C0733 /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		6E7543572BD41468003C0733 /* ShazamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamView.swift; sourceTree = "<group>"; };
 		6E7543592BD44FA8003C0733 /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -66,12 +68,13 @@
 				6E7C08C72BCB6BDD00A65BF6 /* ShazamApp.swift */,
 				6E7C08C92BCB6BDD00A65BF6 /* ContentView.swift */,
 				6E7C08D72BCB6E9600A65BF6 /* ContentViewModel.swift */,
-				6E7C08CB2BCB6BDE00A65BF6 /* Assets.xcassets */,
-				6E7C08CD2BCB6BDE00A65BF6 /* Preview Content */,
 				6E7543572BD41468003C0733 /* ShazamView.swift */,
 				6E75435D2BD5A9BC003C0733 /* IndividualSongView.swift */,
 				6E7543552BD413B5003C0733 /* SongsView.swift */,
+				6E4F80BB2BD6129D002D5CC5 /* FoundSongView.swift */,
 				6E7543592BD44FA8003C0733 /* SongsViewModel.swift */,
+				6E7C08CB2BCB6BDE00A65BF6 /* Assets.xcassets */,
+				6E7C08CD2BCB6BDE00A65BF6 /* Preview Content */,
 			);
 			path = Shazam;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				6E7C08CA2BCB6BDD00A65BF6 /* ContentView.swift in Sources */,
 				6E75435E2BD5A9BC003C0733 /* IndividualSongView.swift in Sources */,
 				6E7C08C82BCB6BDD00A65BF6 /* ShazamApp.swift in Sources */,
+				6E4F80BC2BD6129D002D5CC5 /* FoundSongView.swift in Sources */,
 				6E75435A2BD44FA8003C0733 /* SongsViewModel.swift in Sources */,
 				6E7C08D82BCB6E9600A65BF6 /* ContentViewModel.swift in Sources */,
 				6E7543562BD413B5003C0733 /* SongsView.swift in Sources */,

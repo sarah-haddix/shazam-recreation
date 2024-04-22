@@ -16,7 +16,7 @@ class ContentViewModel: NSObject, ObservableObject {
                                               albumArtURL: URL(string: "https://google.com"),
                                               genres: ["Pop"])
     @Published var songs: [ShazamMedia] = []
-    @Published var isRecording = false
+    @Published var isRecording: Bool = false
     
     // audioEngine: An AVAudioEngine contains a group of connected AVAudioNodes (“nodes”), each of which performs an audio signal generation, processing, or input/output task.
     private let audioEngine = AVAudioEngine()
