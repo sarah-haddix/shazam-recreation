@@ -10,24 +10,30 @@ import PureSwiftUI
 
 struct ShazamView: View {
     @State var showingMenu = false;
+    @State private var breathing = false;
     @StateObject var vm = ContentViewModel()
-    //@StateObject private var shazamHandler = ContentViewModel()
     
     var body: some View {
         NavigationStack {
             GeometryReader { geometry in
-                ZStack {
+                ZStack(alignment: .center) {
                     VStack {
-                        Spacer()
+                        //Spacer()
                         HStack {
-                            Spacer()
-                            Button(action: {vm.startOrEndListening()}) {
-                                ShazamLogo()
-                            }
-                            Spacer()
+                            //Spacer()
+                                Button(action: {vm.startOrEndListening()}) {
+                                    ShazamLogo()
+                                }
+                           // Spacer()
                         }
-                        Spacer()
+                       // Spacer()
                     }
+                    Circle()
+                        .ignoresSafeArea()
+                        .foregroundColor(.red)
+                        .frame(width: 400)
+                        .scaleIf(breathing, 1.5)
+                    
                     SongsView(showingMenu: $showingMenu, vm: vm)
                         .offset(y: geometry.size.height * 0.85)
                         .sheet(isPresented: $showingMenu) {
@@ -37,6 +43,11 @@ struct ShazamView: View {
             }
             .backgroundColor(.appMediumGray)
             .ignoresSafeArea()
+            .onAppear {
+                withAnimation(Animation.linear(duration: 1).repeatForever(autoreverses: true)) {
+                    breathing = true
+                }
+            }
         }
     }
 }

@@ -38,17 +38,21 @@ struct IndividualSongView: View {
                     )
                     .frame(width: 160, height: 110)
                     .foregroundStyle(.appDarkGray)
-                VStack(alignment: .leading) {
-                    Text(song.title ?? "Title")
-                        .foregroundStyle(.appSecondary)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .multilineTextAlignment(.center)
-                    Text(song.artistName ?? "Artist Name")
-                        .foregroundStyle(.appGrey)
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .multilineTextAlignment(.center)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(song.title ?? "Title")
+                            .foregroundStyle(.appSecondary)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.center)
+                        Text(song.artistName ?? "Artist Name")
+                            .foregroundStyle(.appGrey)
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(width: geometry.size.width*0.45)
+                    Spacer()
                 }
                 .frame(width: geometry.size.width*0.45)
             }

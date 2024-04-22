@@ -22,17 +22,43 @@ struct SongsView: View {
         GeometryReader { geometry in
             NavigationStack {
                 VStack {
+                    ZStack {
+                        VStack {
+                            Rectangle()
+                                .foregroundColor(.appSecondary)
+                                .frame(width: 40, height: 4)
+                                .cornerRadius(10)
+                                .padding(.top)
+                            HStack {
+                                Text("My Music")
+                                    .foregroundStyle(.appSecondary)
+                                    .font(showingMenu ? .largeTitle : .title2)
+                                    .fontWeight(.bold)
+                                    //.padding()
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                                    .padding(.bottom)
+                                Spacer()
+                                Text("\(vm.songs.count) Shazams")
+                                    .foregroundStyle(.appGrey)
+                                    .font(.callout)
+                                    .fontWeight(.bold)
+                                   // .padding()
+                                    .padding(.horizontal)
+                                    .padding(.bottom)
+                                    .padding(.bottom)
+                                    .opacity(showingMenu ? 0 : 1)
+                            }
+                        }
+                        
+                        
                     Button {
                         showingMenu = true;
                     } label: {
                         Rectangle()
-                            .frame(width: geometry.size.width, height: 100)
-                        
-                        
-                        
-                        
-                        //TODO MAKE THIS CLEAR
-                            .foregroundStyle(.appPrimary)
+                            .frame(width: geometry.size.width, height: 50)
+                           // .foregroundStyle(.red)
+                            .opacity(0)
                             .padding(.vertical)
                     }
                     .gesture(
@@ -46,9 +72,12 @@ struct SongsView: View {
                                 showingMenu = true;
                             }
                     )
-                    Spacer()
+                }
+                    .padding(.bottom, -20)
+                    
+                   // Spacer()
                     ScrollView {
-                        LazyVGrid(columns: columns, spacing: 20) {
+                        LazyVGrid(columns: columns, spacing: 30) {
                             ForEach(vm.songs, id: \.title) { song in
                                 IndividualSongView(song: song, geometry: geometry)
                             }
