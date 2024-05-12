@@ -114,7 +114,7 @@ struct ShazamLogo: View {
 
 
 
-private struct CircleAndLinks: View {
+struct CircleAndLinks: View {
     
     @State private var animated = false
     @State private var scaled = false
